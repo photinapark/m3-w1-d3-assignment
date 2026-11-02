@@ -1,0 +1,29 @@
+
+extends layout
+
+block content
+    if errors
+        ul
+            each error in errors
+                li= error.msg
+
+    - const formData = typeof data !== 'undefined' ? data : {}
+
+    form(action='.' method='POST')
+        label(for='name') Name:
+        input(
+            type='text'
+            id='name'
+            name='name'
+            value=formData.name || ''
+        )
+
+        label(for='email') Email:
+        input(
+            type='email'
+            id='email'
+            name='email'
+            value=formData.email || ''
+        )
+
+        input(type='submit' value='Submit')
